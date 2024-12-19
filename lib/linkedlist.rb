@@ -1,19 +1,20 @@
 require "rubocop"
 require_relative "node"
 
-class Linkedlist
+class LinkedList
   include Enumerable
   attr_reader :head, :tail
   attr_accessor :count
 
   def initialize
-    @head = nill
-    @tail = nill
+    @head = nil
+    @tail = nil
     @count = 0
   end
 
   def append(value)
-    @node = Node.new(value) # remove
+    @node = Node.new # remove
+    @node.value = value
     @count += 1
     if @head.nil?
       @head = @node
@@ -25,7 +26,8 @@ class Linkedlist
   end
 
   def prepend(value)
-    @node = Node.new(value) # remove
+    @node = Node.new # remove
+    @node.value = value
     @count += 1
     if @head.nil?
       @head = @node
@@ -74,7 +76,7 @@ class Linkedlist
 
   def to_s
     self.each do |node| # rubocop:disable Style/RedundantSelf
-      print "(#{node}) =>"
+      p "(#{node}) =>"
       return nil if node.nil? # optional?
     end
   end
