@@ -3,8 +3,7 @@ require_relative "node"
 
 class LinkedList
   include Enumerable
-  attr_reader :head, :tail
-  attr_accessor :count
+  attr_reader :count
 
   def initialize
     @head = nil
@@ -38,6 +37,14 @@ class LinkedList
     end
   end
 
+  def head
+    @head.value
+  end
+
+  def tail
+    @tail.value
+  end
+
   def at(index)
     i = 0
     while @node
@@ -52,17 +59,18 @@ class LinkedList
 
     @node = @head
     until @node.nil?
-      yield
+      yield @node
       @node = @node.next_node
     end
   end
 
-  def pop
+  def pop # does not work
+    p @head
     @head = nil
   end
 
-  def contains?(value)
-    self.each { |node| return node if node.value == value } # rubocop:disable Style/RedundantSelf
+  def contains?(value) # transform value to string
+    self.each { |node| return "Yes" if node.value == value } # rubocop:disable Style/RedundantSelf
   end
 
   def find(value)
@@ -75,9 +83,14 @@ class LinkedList
   end
 
   def to_s
-    self.each do |node| # rubocop:disable Style/RedundantSelf
-      p "(#{node}) =>"
-      return nil if node.nil? # optional?
+    each do |node|
+      return nil if node.nil?
+
+      print " (#{node.value}) =>" # is returning object inspection as the last printed element
     end
+  end
+
+  def inspect
+    to_s
   end
 end
