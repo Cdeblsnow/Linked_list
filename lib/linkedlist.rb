@@ -64,18 +64,21 @@ class LinkedList
     end
   end
 
-  def pop # does not work
-    p @head
-    @head = nil
+  def pop
+    return nil if @head.nil?
+
+    @node = @head
+    @head = @head.next_node
+    @node.value
   end
 
   def contains?(value) # transform value to string
-    self.each { |node| return "Yes" if node.value == value } # rubocop:disable Style/RedundantSelf
+    each { |node| return "Yes" if node.value == value }
   end
 
   def find(value)
     i = 0
-    self.each do |node| # rubocop:disable Style/RedundantSelf
+    each do |node|
       return i if node.value == value
 
       i += 1
@@ -91,6 +94,6 @@ class LinkedList
   end
 
   def inspect
-    to_s
+    "nil"
   end
 end
