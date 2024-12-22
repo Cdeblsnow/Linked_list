@@ -25,7 +25,7 @@ class LinkedList
   end
 
   def prepend(value)
-    @node = Node.new # remove
+    @node = Node.new # remove, make a method
     @node.value = value
     @count += 1
     if @head.nil?
@@ -91,9 +91,6 @@ class LinkedList
 
       print " (#{node.value}) =>" # is returning object inspection as the last printed element
     end
-  end
-
-  def inspect
-    "nil"
+    " nil"
   end
 end
