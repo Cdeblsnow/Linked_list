@@ -12,7 +12,7 @@ class LinkedList
   end
 
   def append(value)
-    @node = Node.new # remove
+    @node = Node.new 
     @node.value = value
     @count += 1
     if @head.nil?
@@ -25,7 +25,7 @@ class LinkedList
   end
 
   def prepend(value)
-    @node = Node.new # remove, make a method
+    @node = Node.new 
     @node.value = value
     @count += 1
     if @head.nil?
@@ -72,7 +72,7 @@ class LinkedList
     @node.value
   end
 
-  def contains?(value) # transform value to string
+  def contains?(value) 
     each { |node| return "Yes" if node.value == value }
   end
 
@@ -89,7 +89,7 @@ class LinkedList
     each do |node|
       return nil if node.nil?
 
-      print " (#{node.value}) =>" # is returning object inspection as the last printed element
+      print " (#{node.value}) =>" 
     end
     " nil"
   end
